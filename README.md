@@ -1,4 +1,5 @@
 🧮 Calculadora em PHP e JavaScript
+
 Um projeto de calculadora web simples, construído com foco no processamento backend usando PHP, juntamente com HTML e JavaScript para a interface e interatividade do usuário.
 
 📁 Estrutura de Arquivos
@@ -30,22 +31,20 @@ Melhoria de UX (JavaScript):
 
 Permite que o usuário pressione a tecla "Enter" no teclado quando estiver no visor para acionar o botão "Calcular" (=).
 
-🛠️ Tecnologias Utilizadas
+🛠️ Tecnologias Utilizadas:
+
 Backend: PHP
-
 Frontend: HTML5
-
 Estilização: CSS3 (vinculado via style.css)
-
 Interatividade: JavaScript (Vanilla)
 
-⚙️ Como Funciona a Lógica
+⚙️ Como Funciona a Lógica:
 O projeto é centrado no arquivo calculadora.php, que contém toda a lógica de HTML, PHP e JavaScript. O arquivo style.css é responsável por toda a estilização visual.
 
-Interface (HTML): Dentro de calculadora.php, a calculadora é um <form> HTML com method="post". Todos os botões (números, operadores, "C", "=") são do tipo type="submit".
+Interface (HTML): 
+Dentro de calculadora.php, a calculadora é um <form> HTML com method="post". Todos os botões (números, operadores, "C", "=") são do tipo type="submit".
 
 Entrada do Usuário (PHP):
-
 Quando um botão name="botao" (números, operadores, "C") é clicado, o formulário é enviado para o próprio calculadora.php.
 
 O PHP captura o valor do botão e o concatena na string do visor ($visor).
@@ -66,17 +65,17 @@ Se a string for segura, o PHP usa a função eval() (com supressão de erros @) 
 
 O resultado (ou uma mensagem de erro) é enviado de volta ao visor da mesma forma, usando echo "<script>...".
 
-🚀 Como Executar
+🚀 Como Executar:
 Como este projeto utiliza PHP para o backend, ele não funcionará apenas abrindo o arquivo calculadora.php diretamente no navegador.
 
 Você precisa de um ambiente de servidor local com suporte a PHP:
 
-Instale um ambiente como XAMPP, WAMP ou MAMP.
+Instale um ambiente como XAMPP.
 
 Clone ou baixe este repositório.
 
 Mova a pasta do projeto (que se chama projeto-php) para o diretório htdocs (no XAMPP) ou www (no WAMP/MAMP).
 
-Inicie o servidor Apache no seu painel de controle (XAMPP, WAMP, etc.).
+Inicie o servidor Apache no seu painel de controle (XAMPP).
 
 Acesse o projeto no seu navegador através de http://localhost/projeto-php/calculadora.php.
