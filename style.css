@@ -1,0 +1,265 @@
+/* --- 1. TEMA DARK MODE (Corpo da Página) --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #4b4949; /* Fundo principal escuro (Sua cor) */
+    color: #f0f0f0;
+    display: flex;
+    flex-direction: column; /* Organiza o menu e a calculadora verticalmente */
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px; /* Espaço para o menu */
+}
+
+/* --- Menu (Estilização Bônus) --- */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+ul li h1 {
+    margin: 0; /* Remove margem padrão */
+    color: #f0f0f0;
+    font-size: 2.5em; /* Fonte bem grande */
+    font-weight: bold;
+    /* Sombra sutil para combinar com o tema 3D */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+/* --- 2. ESTILO 3D (Corpo da Calculadora) --- */
+form {
+    background-color: #2d2d2d; /* Fundo da calculadora */
+    padding: 25px;
+    border-radius: 20px;
+    /* Efeito 3D "levantado" (Neumorfismo) */
+    box-shadow: 
+        8px 8px 16px rgba(0, 0, 0, 0.5), /* Sombra escura (embaixo/direita) */
+        -8px -8px 16px rgba(255, 255, 255, 0.05); /* Sombra clara (cima/esquerda) */
+    width: 300px; /* Largura fixa para a calculadora */
+}
+
+/* --- Visor (Caixa de Texto) --- */
+.CaixaTexto {
+    width: 100%;
+    box-sizing: border-box; /* Garante que o padding não quebre o layout */
+    padding: 20px;
+    font-size: 2.2em;
+    text-align: right;
+    border: none;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background-color: #1a1a1a; /* Fundo do visor bem escuro */
+    color: #ffffff;
+    /* Efeito 3D "pressionado" (inset) */
+    box-shadow: 
+        inset 4px 4px 8px rgba(0, 0, 0, 0.7),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.05);
+}
+
+/* --- Base para TODOS os botões --- */
+input[type="submit"] {
+    width: 60px; /* Tamanho dos botões */
+    height: 60px;
+    margin: 5px;
+    border: none;
+    border-radius: 12px; /* Bordas arredondadas */
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.1s ease; /* Transição suave para o clique */
+}
+
+/* --- Botões de Número e Operador (.BtnNumb) --- */
+.BtnNumb {
+    background-color: #554a4a; /* Cor dos botões numéricos (Sua cor) */
+    color: #f0f0f0;
+    /* Efeito 3D "levantado" */
+    box-shadow: 
+        3px 3px 8px rgba(0, 0, 0, 0.5),
+        -3px -3px 8px rgba(255, 255, 255, 0.05);
+}
+
+/* --- 4. EFEITO AO PRESSIONAR (.BtnNumb:active) --- */
+.BtnNumb:active {
+    /* Efeito 3D "pressionado" */
+    box-shadow: 
+        inset 3px 3px 8px rgba(0, 0, 0, 0.7),
+        inset -3px -3px 8px rgba(255, 255, 255, 0.05);
+    transform: translateY(2px); /* Simula o botão "afundando" */
+    background-color: #444; /* Escurece um pouco ao clicar */
+}
+
+/* --- Destaque para C (Limpar) --- */
+.BtnNumb[value="C"] {
+    background-color: #d9534f; /* Tom de vermelho */
+    color: white;
+}
+.BtnNumb[value="C"]:active {
+    background-color: #c9302c; /* Vermelho mais escuro ao clicar */
+}
+
+/* --- Destaque para Operadores (+, -, *, /) --- */
+.BtnNumb[value="+"],
+.BtnNumb[value="-"],
+.BtnNumb[value="*"],
+.BtnNumb[value="/"] {
+    background-color: #555;
+}
+.BtnNumb[value="+"]:active,
+.BtnNumb[value="-"]:active,
+.BtnNumb[value="*"]:active,
+.BtnNumb[value="/"]:active {
+    background-color: #666;
+}
+
+/* --- 3. BOTÃO CALCULAR LARANJA (.BtnCalcular) --- */
+.BtnCalcular {
+    width: 100%; /* Ocupa a largura total */
+    box-sizing: border-box; /* Garante que não quebre o layout */
+    background-color: #ff9500; /* Laranja */
+    color: white;
+    /* Efeito 3D "levantado" */
+    box-shadow: 
+        3px 3px 8px rgba(0, 0, 0, 0.5),
+        -3px -3px 8px rgba(255, 255, 255, 0.05);
+}
+
+/* --- 4. EFEITO AO PRESSIONAR (.BtnCalcular:active) --- */
+.BtnCalcular:active {
+    /* Efeito 3D "pressionado" */
+    box-shadow: 
+        inset 3px 3px 8px rgba(0, 0, 0, 0.7),
+        inset -3px -3px 8px rgba(255, 255, 255, 0.05);
+    transform: translateY(2px);
+    background-color: #e08400; /* Laranja mais escuro ao clicar */
+}
+
+/* ================================================= */
+/* BOTÃO DE MUDAR TEMA                               */
+/* ================================================= */
+
+#theme-toggle {
+    background-color: #333;
+    color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+    /* Sombra 3D igual aos botões */
+    box-shadow: 
+        3px 3px 8px rgba(0, 0, 0, 0.5),
+        -3px -3px 8px rgba(255, 255, 255, 0.05);
+}
+
+#theme-toggle:hover {
+    background-color: #ff9500; /* Laranja (mesma cor do botão '=') */
+    color: white; /* Garante que o texto fique legível */
+}
+
+/* Hover para o modo claro (precisa ser específico) */
+html.light-mode #theme-toggle:hover {
+    background-color: #ff9500; /* Laranja também */
+    color: white; /* O texto do modo claro era escuro, mudamos para branco */
+}
+
+#theme-toggle:active {
+    box-shadow: 
+        inset 3px 3px 8px rgba(0, 0, 0, 0.7),
+        inset -3px -3px 8px rgba(255, 255, 255, 0.05);
+    transform: translateY(2px);
+}
+
+
+/* ================================================= */
+/* ESTILOS DO MODO CLARO (VERSÃO CORRIGIDA)          */
+/* ================================================= */
+
+html.light-mode, 
+html.light-mode body {
+    background-color: #e0e0e0; /* Fundo claro */
+    color: #1c1c1c; /* Texto escuro */
+}
+
+/* --- Ajuste das sombras 3D (agora lendo do <html>) --- */
+
+/* *** CORREÇÃO AQUI: Estilo de TÍTULO para o H1 no modo claro *** */
+html.light-mode ul li h1 {
+    /* Estilo de TÍTULO para modo claro */
+    color: #1c1c1c; /* Cor do texto escura */
+    /* Sombra sutil para o modo claro */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15); 
+    /* Removemos o fundo e a sombra do "botão" */
+}
+
+html.light-mode #theme-toggle {
+    background-color: #969090;
+    color: #2c2a2a;
+    box-shadow: 
+        5px 5px 10px rgba(0, 0, 0, 0.1),
+        -5px -5px 10px rgba(255, 255, 255, 0.9);
+}
+html.light-mode #theme-toggle:active {
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.9);
+}
+
+html.light-mode form {
+    background-color: #969090;
+    box-shadow: 
+        8px 8px 16px rgba(0, 0, 0, 0.15),
+        -8px -8px 16px rgba(58, 57, 57, 0.9);
+}
+
+html.light-mode .CaixaTexto {
+    background-color: #d8d4d4;
+    color: #1c1c1c;
+    box-shadow: 
+        inset 4px 4px 8px rgba(0, 0, 0, 0.15),
+        inset -4px -4px 8px rgba(58, 57, 57, 0.9);
+}
+
+html.light-mode .BtnNumb {
+    background-color: #c7c6c6;
+    color: #333;
+    box-shadow: 
+        3px 3px 8px rgba(0, 0, 0, 0.15),
+        -3px -3px 8px rgba(58, 57, 57, 0.9);
+}
+
+html.light-mode .BtnNumb:active {
+    box-shadow: 
+        inset 3px 3px 8px rgba(0, 0, 0, 0.2),
+        inset -3px -3px 8px rgba(255, 255, 255, 0.9);
+    background-color: #c0c0c0;
+}
+
+html.light-mode .BtnCalcular {
+    box-shadow: 
+        3px 3px 8px rgba(0, 0, 0, 0.15),
+        -3px -3px 8px rgba(58, 57, 57, 0.9);
+}
+
+html.light-mode .BtnCalcular:active {
+    box-shadow: 
+        inset 3px 3px 8px rgba(0, 0, 0, 0.2),
+        inset -3px -3px 8px rgba(255, 255, 255, 0.9);
+    background-color: #e08400;
+}
+
+/* Botões especiais no modo claro */
+html.light-mode .BtnNumb[value="C"] {
+    background-color: #d9534f;
+    color: white;
+}
+html.light-mode .BtnNumb[value="+"],
+html.light-mode .BtnNumb[value="-"],
+html.light-mode .BtnNumb[value="*"],
+html.light-mode .BtnNumb[value="/"] {
+    background-color: #838282;
+}
