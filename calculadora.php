@@ -39,6 +39,54 @@
 
         <input class="BtnCalcular" type="submit" name="calcular" value="="><br>
     </form>
+    
+    <?php
+    if (isset($_POST["botao"])) {
+    $visor   = $_POST["visor"]; 
+    $valor   = $_POST["botao"];   
+    
+    if ($valor == "C") {
+        $visor = "";
+    } else {
+        $visor .= $valor;
+    }
+    
+    echo "<script>document.getElementsByName('visor')[0].value='$visor';</script>";
+
+    } 
+    elseif (isset($_POST["calcular"])) {
+    $visor = $_POST["visor"]; 
+    
+    $visor_limpo = str_replace(' ', '', $visor);
+    $regex_segura = '/^[\d\.\+\-\*\/\(\)]+$/';
+
+    
+    if (str_contains($visor_limpo, '/0')) {
+        $resultado = "Cálculo inválido";
+
+    // 2. Se não houver "/0", verificamos se a string é segura (só números/operadores)
+    } elseif (preg_match($regex_segura, $visor_limpo)) {
+        
+        // 3. Só agora tentamos calcular
+        // (Ainda usamos o @ por segurança, caso algo como (5/(2-2)) aconteça)
+        $resultado = @eval("return $visor_limpo;"); 
+        
+        if ($resultado === false) {
+            $resultado = "Erro de Sintaxe";
+        
+        // 4. Verificação final para casos como 0/0 ou 5/(2-2)
+        } elseif (is_infinite($resultado) || is_nan($resultado)) {
+            $resultado = "Cálculo inválido";
+        }
+        
+    // 5. Se a string não passou na regex (tinha letras, etc.)
+    } else {
+        $resultado = "Cálculo inválido";
+    }
+    
+    echo "<script>document.getElementsByName('visor')[0].value='$resultado';</script>";
+    }
+    ?>
 </body>
 
 </html>
