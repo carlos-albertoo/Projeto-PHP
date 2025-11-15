@@ -87,6 +87,55 @@
     echo "<script>document.getElementsByName('visor')[0].value='$resultado';</script>";
     }
     ?>
+    <script>
+
+    var visorInput = document.getElementsByName('visor')[0];
+    var calcularButton = document.getElementsByName('calcular')[0];
+
+    visorInput.addEventListener('keydown', function(event) {
+        
+        if (event.key === 'Enter') {
+            event.preventDefault(); 
+            calcularButton.click(); 
+        }
+    });
+    </script>
+
+    <script>
+    // 1. Pega os elementos
+    const themeButton = document.getElementById('theme-toggle');
+    // MUDANÇA AQUI: Pegamos o <html> (documentElement) em vez do <body>
+    const htmlElement = document.documentElement; 
+
+    // 2. Função para aplicar o tema salvo
+    function aplicarTemaSalvo() {
+        const temaSalvo = localStorage.getItem('theme');
+        if (temaSalvo === 'light') {
+            htmlElement.classList.add('light-mode'); // Aplica no <html>
+        } else {
+            htmlElement.classList.remove('light-mode'); // Remove do <html>
+        }
+    }
+
+    // 3. Função para alternar o tema
+    function alternarTema() {
+        htmlElement.classList.toggle('light-mode'); // Alterna no <html>
+        
+        // 4. Salvar a escolha no localStorage
+        if (htmlElement.classList.contains('light-mode')) {
+            localStorage.setItem('theme', 'light');
+        } else {
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+
+    // 5. Adiciona o clique ao botão
+    themeButton.addEventListener('click', alternarTema);
+
+    // 6. Aplica o tema salvo assim que a página carrega
+    document.addEventListener('DOMContentLoaded', aplicarTemaSalvo);
+    </script>
+
 </body>
 
 </html>
