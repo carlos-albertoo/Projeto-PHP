@@ -72,3 +72,5 @@ Você precisa de um ambiente de servidor local com suporte a PHP:
 - Mova a pasta do projeto (que se chama projeto-php) para o diretório htdocs (no XAMPP) ou www (no WAMP/MAMP).
 - Inicie o servidor Apache no seu painel de controle (XAMPP).
 - Acesse o projeto no seu navegador através de http://localhost/projeto-php/calculadora.php.
+
+VIDEO EXPLICATIVO DO PROJETO: https://youtu.be/CvP5owxA7i0?si=qMzDdWqKvVXBQPbf
